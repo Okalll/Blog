@@ -1,11 +1,12 @@
 from flask import render_template
-from app import app
+from . import main
 from .forms import BlogFOrm
 from .models import blog
+
 Blog= blog.Blog
 
 # Views
-@app.route('/')
+@main.route('/')
 def index():
 
     '''
@@ -13,7 +14,7 @@ def index():
     '''
     return render_template('index.html')
 
-@app.route('/blog/new/title', methods = ['GET','POST'])
+@main.route('/blog/new/title', methods = ['GET','POST'])
 def new_blog(title):
     form = blogForm()
 
