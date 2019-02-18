@@ -14,7 +14,7 @@ class RegisterForm(FlaskForm):
     email = StringField('Your Email Address',validators=[Required(),Email()])
     password = PasswordField('Password',validators = [Required(), EqualTo('password_confirm',message = 'Passwords must match')])
     password_confirm = PasswordField('Confirm Passwords',validators = [Required()])
-    submit = SubmitField('Sign Up')
+    submit = SubmitField('profile.html')
 
     def validate_email(self,data_field):
         if User.query.filter_by(email =data_field.data).first():

@@ -5,7 +5,7 @@ class Config:
     General configuration parent class
     '''
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:1234@localhost/blog'
-    SECRET_KEY = os.environ['SECRET_KEY']
+    SECRET_KEY = '12345'
 
 
 
