@@ -1,9 +1,11 @@
+import os
+
 class Config:
     '''
     General configuration parent class
     '''
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:1234@localhost/blog'
-    SECRET_KEY = '12345'
+    SECRET_KEY = os.environ['SECRET_KEY']
 
 
 
@@ -25,7 +27,7 @@ class DevConfig(Config):
         Config: The parent configuration class with General configuration settings
     '''
 
-DEBUG = True
+    DEBUG = True
 
 config_options = {
 'development':DevConfig,
