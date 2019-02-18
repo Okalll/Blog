@@ -1,9 +1,9 @@
-from flask import render_template
+from flask import render_template,url_for,request,flash
 from . import main
 from .forms import BlogFOrm
-from .models import blog
+from ..models import Blog
+from .. import auth
 
-Blog= blog.Blog
 
 # Views
 @main.route('/')
