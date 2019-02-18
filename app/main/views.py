@@ -1,8 +1,9 @@
-from flask import render_template,url_for,request,flash
-from . import main
-from .forms import BlogFOrm
+from flask import render_template,url_for,request
+from flask_login import login_required
 from ..models import Blog
-from .. import auth
+from .forms import BlogForm
+from . import main
+from .. import db
 
 
 # Views
@@ -15,14 +16,20 @@ def index():
     return render_template('index.html')
 
 @main.route('/blog/new/title', methods = ['GET','POST'])
-def new_blog(title):
-    form = blogForm()
-
+@login_required
+def new_pitch(title):
+    '''
+    Function that creates new pitches
+    '''
+    form = BlogForm()
 
     if form.validate_on_submit():
-        title = form.title.data
-        blog = form.blog.data
-        new_blog = blog(title,blog)
+        blog = form.content.data
+        category = form.category.data
+        new_blog = blog(blog=blog, category=category)
+
         new_blog.save_blog()
-        return redirect(url_for('blog',title= title ))
+        return redirect(url_for('main.index'))
+
+    return render_template('new_blog.html', new_blog_form=form, category=category)
 
