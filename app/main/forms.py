@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import Form,StringField,TextAreaField,SubmitField
-from wtforms.validators import Required
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, TextAreaField, RadioField, SelectField
+from wtforms.validators import Required, Email, EqualTo
 
 class BlogForm(FlaskForm):
 

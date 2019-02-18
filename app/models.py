@@ -29,23 +29,6 @@ def password(self):
         # return f'User {self.username}'
         return '<User %r>' % self.username
 
-
-class Blog:
-
-    def save_blog(self):
-        Blog.all_blogs.append(self)
-
-
-@classmethod
-def clear_blogs(cls):
-    Blog.all_blogs.clear()
-
-
-@classmethod
-def get_blogs(cls, title):
-
- response = []
-
 class Login:
     login = []
 
@@ -63,3 +46,28 @@ class Register:
         self.email = email
         self.password = password
         self.confirmpassword = confirmpassword
+
+
+class Blog(db.Model):
+    __tablename__ = 'blog'
+
+    id = db.Column(db.Integer, primary_key=True)
+    owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    description = db.Column(db.String(), index=True)
+    category = db.Column(db.String(255), nullable=False)
+
+
+def save_blog(self):
+        Blog.all_blogs.append(self)
+
+
+@classmethod
+def clear_blogs(cls):
+    Blog.all_blogs.clear()
+
+
+@classmethod
+def get_blogs(cls, title):
+
+ response = []
+
