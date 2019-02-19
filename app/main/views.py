@@ -69,12 +69,8 @@ def new_blog():
     '''
     form = BlogForm()
 
-    if form.validate_on_submit():
-        blog = form.content.data
-        category = form.category.data
-        new_blog = blog(blog=blog, category=category)
 
-        new_blog.save_blog()
-        return redirect(url_for('main.index'))
+    new_blog.save_blog()
+    return redirect(url_for('main.index'))
 
     return render_template('new_blog.html', new_blog_form=form)
