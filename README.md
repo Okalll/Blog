@@ -76,6 +76,10 @@ Open the browser on `http://localhost:5000/`
 
 7. A user can update the blogs by reloading the page 
 
+## Link to Live Website
+
+https://bloggz.herokuapp.com/
+
 ### License
 
 MIT License
