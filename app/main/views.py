@@ -61,19 +61,19 @@ def update_pic(name):
     return redirect(url_for('main.profile', name=name))
 
 
-@main.route('/blog/new/', methods=['GET', 'POST'])
+@main.route('/blog/new/', methods=['GET','POST'])
 @login_required
 def new_blog():
     '''
-    Function that creates new bloges
+    Function that creates new blogs
     '''
     form = BlogForm()
 
     if form.validate_on_submit():
-     Blog = form.content.data
+     Blog = form.body.data
      category = form.category.data
      new_blog = Blog(blog=Blog)
      new_blog.save_blog()
      return redirect(url_for('main.index'))
 
-    return render_template('new_blog.html', new_blog_form=form)
+    return render_template('new_blog.html', new_blog_form = form)
